@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- Aaron Erickson | IS 201 Section 002 | Final Web Development Project -->
+<!-- scratch.html — From-Scratch Page: Iron Mind Powerlifting
+     Built entirely without Bootstrap. Uses custom HTML + CSS (styles.css).
+     Demonstrates: nested lists, YouTube embed, Tableau embed, custom CSS,
+     on-page anchors, background image, positioned divs, and more.           -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iron Mind Powerlifting</title>
+
+  <!-- From-scratch custom stylesheet (CSS requirement — Ch. 24 & 25) -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== FIXED NAVIGATION BAR (Chapter 25 — position: fixed, z-index) ===== -->
+  <div id="fixed-nav">
+    <a href="index.html" title="Back to Professional Portfolio" class="nav-link nav-pro">&#8592; Portfolio</a>
+    <a href="scratch.html" title="Home — Iron Mind" class="nav-link">Home</a>
+    <a href="page2.html" title="Training Log" class="nav-link">Training Log</a>
+    <a href="https://www.usapowerlifting.com" title="USA Powerlifting Official Site" target="_blank" class="nav-link">USAPL &#8599;</a>
+    <a href="#about" title="Jump to About section" class="nav-link">About</a>
+    <a href="app.html" title="Powerlifting Calculator App" class="nav-link nav-app">&#9889; Calculator</a>
+  </div>
+
+  <!-- ===== HERO SECTION (absolute positioning + z-index) ===== -->
+  <div id="hero">
+    <div id="hero-accent"></div>
+    <div id="hero-title">
+      <h1>Iron Mind <span class="highlight">Powerlifting</span></h1>
+      <p>Squat. Bench. Deadlift. <br /> Train with purpose.</p>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT WRAPPER ===== -->
+  <div id="main-wrapper">
+
+    <!-- ===== ABOUT SECTION (on-page anchor target) ===== -->
+    <div id="about">
+      <h2>About This Site</h2>
+      <p style="font-style: italic; color: #5a5a5a;">
+        Welcome to Iron Mind — a resource for competitive powerlifters who want to
+        train smarter, peak on meet day, and keep progressing for decades.
+      </p>
+      <p>
+        Whether you compete in the USAPL, IPF, or just train for your own PRs,
+        this site covers the fundamentals of the <span class="highlight-text">squat, bench press,
+        and deadlift</span> so you can build a foundation that lasts.
+      </p>
+      <p>Founded in Salt Lake City, UT.<br />Built for lifters, by lifters.</p>
+    </div>
+
+    <!-- ===== THE BIG THREE + NESTED LISTS ===== -->
+    <div id="lifts-section">
+      <h2>The Big Three Lifts</h2>
+      <h3>Why These Movements?</h3>
+      <p>
+        The squat, bench press, and deadlift are the three competition lifts in
+        powerlifting. Together they test total lower-body strength, upper-body pressing
+        power, and posterior chain dominance.
+      </p>
+
+      <!-- Floated image (Chapter 25 — float) -->
+      <img
+        src="https://placehold.co/300x200/1a1a2e/e8c547?text=Deadlift+PR"
+        alt="Powerlifter pulling a heavy deadlift"
+        width="300"
+        height="200"
+        class="float-img"
+      />
+
+      <h4>Competition Standards</h4>
+      <!-- NESTED LIST REQUIREMENT: ordered list containing unordered lists -->
+      <!-- Each competition lift (ordered) has unordered technique cues nested inside -->
+      <ol class="meet-list">
+        <li>
+          <strong>Squat</strong> — break parallel, command rack, no hitching
+          <ul class="lift-list nested-list">
+            <li>Break hip crease below top of knee (depth standard)</li>
+            <li>Wait for the "Squat" and "Rack" commands</li>
+            <li>Knees out, chest up, drive through the floor</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Bench Press</strong> — pause on chest, press on command
+          <ul class="lift-list nested-list">
+            <li>Full pause — bar must visibly stop on chest</li>
+            <li>Feet flat or on a platform (federation-dependent)</li>
+            <li>No butt rise; both glutes must remain on the bench</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Deadlift</strong> — lock out hips and knees, controlled descent
+          <ul class="lift-list nested-list">
+            <li>Bar must be lifted from a dead stop on the floor</li>
+            <li>Hips and knees fully locked at the top</li>
+            <li>Bar must be lowered in a controlled manner</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Meet Day Order of Events</h3>
+      <ol class="meet-list">
+        <li>Weigh-in and rack heights submission</li>
+        <li>Warm-up period (typically 2 hours)</li>
+        <li>Squat — 3 attempts per lifter</li>
+        <li>Bench Press — 3 attempts per lifter</li>
+        <li>Deadlift — 3 attempts per lifter</li>
+        <li>Awards and total calculation</li>
+      </ol>
+    </div>
+
+    <!-- ===== YOUTUBE VIDEO EMBED ===== -->
+    <!-- YouTube embed learned outside Ch. 23/24/25 — embedded via iframe -->
+    <!-- Note: YouTube embeds require internet connection; won't play locally -->
+    <div id="video-section">
+      <h2>Competition Highlights</h2>
+      <p>
+        Watch elite lifters compete at the highest levels of the sport. Below is a
+        highlight reel from the USAPL Raw Nationals — one of the premier raw powerlifting
+        meets in the United States.
+      </p>
+      <div class="video-wrapper">
+        <!-- YouTube embed: replace "FjBavOW-mbA" with any YouTube video ID you prefer -->
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/FjBavOW-mbA"
+          title="USAPL Raw Nationals Powerlifting Highlights"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <p class="video-caption">
+        <em>USAPL Raw Nationals 2023 — 110KG Showdown</em>
+      </p>
+    </div>
+
+    <!-- ===== PROGRAMMING SECTION ===== -->
+    <div id="programming">
+      <h2>Sample Training Programs</h2>
+      <h3>Beginner Linear Progression</h3>
+      <p>
+        New lifters respond best to simple, frequent stimulus. Add weight every session
+        and keep technique the priority. The goal is not maximal weight — it is maximal
+        <span class="highlight-text">movement quality under load</span>.
+      </p>
+
+      <h4>Weekly Template</h4>
+      <ul class="lift-list">
+        <li><strong>Monday</strong> — Squat, Bench, Deadlift</li>
+        <li><strong>Wednesday</strong> — Squat, Overhead Press, Deadlift variation</li>
+        <li><strong>Friday</strong> — Squat, Bench, Deadlift</li>
+      </ul>
+
+      <p>
+        For more detailed programming and competition prep, visit
+        <a
+          href="https://www.strongerbyscience.com"
+          title="Stronger by Science — Evidence-Based Strength Training"
+          target="_blank"
+          class="body-link"
+        >Stronger by Science</a> and
+        <a
+          href="https://www.usapowerlifting.com"
+          title="USA Powerlifting Official Site"
+          target="_blank"
+          class="body-link"
+        >USA Powerlifting</a>.
+      </p>
+    </div>
+
+    <!-- ===== TABLEAU LIVE GRAPH SECTION ===== -->
+    <!-- Requirement: live and interactive embedded Tableau graph -->
+    <div id="tableau-section">
+      <h2>Live Data: 47 Weeks of Powerlifting</h2>
+      <p>
+        The interactive Tableau dashboard below tracks squat, bench, and deadlift
+        progression over 47 weeks alongside sentiment analysis of training journal posts.
+        Use the filters, hover over data points, and explore the visualization.
+      </p>
+      <p style="font-size: 13px; color: #888; font-style: italic;">
+        Note: The Tableau embed requires an internet connection and will not display locally.
+        Once the site is hosted online (e.g., via GitHub Pages), it will be fully interactive.
+        To swap this viz: go to public.tableau.com, find a viz, click Share &rarr; copy Embed Code.
+      </p>
+
+      <!-- ===== TABLEAU PUBLIC EMBED ===== -->
+      <div class="tableau-container">
+        <div class='tableauPlaceholder' id='viz_scratch' style='position: relative; width: 100%;'>
+          <noscript>
+            <a href='https://public.tableau.com/'>
+              <img alt='47 Weeks of Powerlifting' src='https://public.tableau.com/static/images/QS/QSUpdated_up3/Presentation2/1_rss.png' style='border: none; width:100%;' />
+            </a>
+          </noscript>
+          <object class='tableauViz' style='display:none; width:100%;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='QSUpdated_up3/Presentation2' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en-US' />
+          </object>
+        </div>
+        <script type='text/javascript'>
+          var divElem = document.getElementById('viz_scratch');
+          var vizElem = divElem.getElementsByTagName('object')[0];
+          vizElem.style.width = '100%';
+          vizElem.style.height = (divElem.offsetWidth * 0.65) + 'px';
+          var scriptElem = document.createElement('script');
+          scriptElem.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElem.parentNode.insertBefore(scriptElem, vizElem);
+        </script>
+      </div>
+
+    </div>
+
+    <!-- ===== BANNER IMAGE ===== -->
+    <div id="image-section">
+      <!-- Image not from Bootstrap theme (from-scratch requirement) -->
+      <img
+        src="https://placehold.co/700x250/e8c547/1a1a2e?text=Train+Heavy+%7C+Stay+Technical"
+        alt="Iron Mind Powerlifting motivational banner"
+        width="700"
+        height="250"
+        class="banner-img"
+      />
+    </div>
+
+    <!-- ===== CALL TO ACTION ===== -->
+    <div id="cta-section">
+      <h2>Tools &amp; Resources</h2>
+      <p>
+        Head over to the
+        <a href="page2.html" title="Open the Training Log page" class="body-link">Training Log</a>
+        to track your lifts, review meet attempts, and plan your next cycle.
+      </p>
+      <p>
+        Try the
+        <a href="app.html" title="Powerlifting Calculator App" class="body-link">Powerlifting Calculator</a>
+        to compute your Wilks score, IPF points, and recommended attempt selection.
+      </p>
+      <p>
+        Ready to take it to the professional side? Visit
+        <a href="index.html" title="Aaron Erickson Portfolio" class="body-link">Aaron&#8217;s Portfolio</a>.
+      </p>
+    </div>
+
+  </div><!-- end #main-wrapper -->
+
+  <!-- ===== FOOTER ===== -->
+  <div id="footer">
+    <p>Iron Mind Powerlifting &copy; 2026 | Salt Lake City, UT &nbsp;|&nbsp;
+      <a href="index.html" class="body-link" style="font-size: 13px;">Back to Portfolio</a>
+    </p>
+  </div>
+
+</body>
+</htm
