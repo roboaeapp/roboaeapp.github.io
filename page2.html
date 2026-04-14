@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!-- Aaron Erickson | Section 002 | April 9, 2026 -->
+<!-- page2.html — Training Log page for Iron Mind Powerlifting site -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training Log | Iron Mind Powerlifting</title>
+  <!-- External stylesheet (Chapter 24) -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== FIXED NAVIGATION BAR (Chapter 25 — position: fixed) ===== -->
+  <div id="fixed-nav">
+    <!-- Relative link back to the home page -->
+    <a href="index.html" title="Go to Home" class="nav-link">Home</a>
+    <a href="page2.html" title="You are here — Training Log" class="nav-link">Training Log</a>
+    <a href="https://www.usapowerlifting.com" title="USA Powerlifting Official Site" target="_blank" class="nav-link">USAPL ↗</a>
+    <!-- On-page anchor link (Chapter 23 — anchor links) -->
+    <a href="#meet-history" title="Jump to Meet History" class="nav-link">Meet History</a>
+  </div>
+
+  <!-- ===== PAGE HERO ===== -->
+  <div id="hero" class="page2-hero">
+    <!-- Absolute-positioned decorative accent (Chapter 25 — position: absolute, z-index) -->
+    <div id="hero-accent"></div>
+    <div id="hero-title">
+      <h1>Training <span class="highlight">Log</span></h1>
+      <p>Record every rep. Review every attempt. <br /> Improve every cycle.</p>
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div id="main-wrapper">
+
+    <!-- ===== CURRENT CYCLE SECTION ===== -->
+    <div id="current-cycle">
+      <h2>Current Training Cycle</h2>
+      <h3>Meet Prep — 12-Week Block</h3>
+
+      <!-- Inline style example on this page too -->
+      <p style="border-left: 4px solid #e8c547; padding-left: 14px; color: #ccc;">
+        Currently 8 weeks out. Peak phase begins Week 9. Openers must be locked in
+        by Week 10 at the latest.
+      </p>
+
+      <!-- Floated image (Chapter 25 — float) -->
+      <img
+        src="https://placehold.co/280x190/e8c547/1a1a2e?text=Week+8+Training"
+        alt="Week 8 heavy training session photo"
+        width="280"
+        height="190"
+        class="float-img"
+      />
+
+      <h4>Attempt Selection Guidelines</h4>
+      <ol class="meet-list">
+        <li>Opener — a weight you could triple on a bad day (roughly 90–92% of max)</li>
+        <li>Second attempt — conservative PR territory (96–100%)</li>
+        <li>Third attempt — competition PR or stretch goal (&gt;100%)</li>
+      </ol>
+
+      <h3>Weekly Max Effort Work</h3>
+      <ul class="lift-list">
+        <li><strong>Squat:</strong> 485 lbs × 2 — 3 weeks out from opener weight</li>
+        <li><strong>Bench:</strong> 295 lbs × 3 — building into a 310 opener</li>
+        <li><strong>Deadlift:</strong> 545 lbs × 1 — on track for 560 opener</li>
+      </ul>
+    </div>
+
+    <!-- ===== TECHNIQUE NOTES SECTION ===== -->
+    <div id="technique-notes">
+      <h2>Technique Notes</h2>
+
+      <h3>Squat Cues</h3>
+      <p>
+        Maintain <span class="highlight-text">chest up and elbows forward</span> throughout the descent.
+        Drive the knees out against the belt of tension created by the hip flexors.
+        Think "spread the floor" on the way up.
+      </p>
+
+      <h3>Bench Press Cues</h3>
+      <p>
+        Set the arch before unracking. Squeeze the bar hard to activate the lats.
+        Touch <span class="highlight-text">low sternum</span>, not the collarbone.
+        Drive through the legs to transfer leg drive into the press.
+      </p>
+
+      <h3>Deadlift Cues</h3>
+      <p>
+        Push the floor away — don't think of it as a pull.
+        <br />
+        Keep the bar dragging the shins. Lock hips through at the top.
+      </p>
+
+      <!-- Second image on page2 -->
+      <img
+        src="https://placehold.co/560x220/1a1a2e/e8c547?text=Technique+%7C+Consistency+%7C+Strength"
+        alt="Motivational banner for powerlifting technique"
+        width="560"
+        height="220"
+        class="banner-img"
+      />
+    </div>
+
+    <!-- ===== MEET HISTORY SECTION (on-page anchor target) ===== -->
+    <div id="meet-history">
+      <h2>Meet History</h2>
+      <h3>Recent Competition Results</h3>
+
+      <h4>Utah Open — January 2026</h4>
+      <ul class="lift-list">
+        <li>Squat — 468 lbs (3/3, all white lights)</li>
+        <li>Bench — 286 lbs (2/3, red-lighted third for soft lockout)</li>
+        <li>Deadlift — 534 lbs (3/3, state record attempt)</li>
+        <li>Total — 1,288 lbs | Wilks Score: 412.6</li>
+      </ul>
+
+      <h4>Rocky Mountain Classic — September 2025</h4>
+      <ul class="lift-list">
+        <li>Squat — 446 lbs</li>
+        <li>Bench — 275 lbs</li>
+        <li>Deadlift — 512 lbs</li>
+        <li>Total — 1,233 lbs</li>
+      </ul>
+
+      <p>
+        Full meet videos and attempt breakdowns available on the
+        <a
+          href="https://www.youtube.com"
+          title="Powerlifting meet footage on YouTube"
+          target="_blank"
+          class="body-link"
+        >YouTube channel ↗</a>.
+      </p>
+    </div>
+
+    <!-- ===== NUTRITION SECTION ===== -->
+    <div id="nutrition">
+      <h2>Nutrition &amp; Weight Class</h2>
+      <p>
+        Competing in the 93 kg (205 lb) class. Water cut is minimal — primary strategy
+        is to walk around at competition weight without a significant cut. Caloric intake
+        is managed during the off-season to allow slow, lean mass gain without
+        excessive fat accumulation.
+      </p>
+
+      <h4>Pre-Meet Week Checklist</h4>
+      <ol class="meet-list">
+        <li>Drop sodium 3 days out to reduce water retention</li>
+        <li>Scale down carbohydrates slightly 2 days out</li>
+        <li>Carb load the night before with familiar foods</li>
+        <li>Weigh in — confirm weight class eligibility</li>
+        <li>Refeed immediately after weigh-in (2–3 hours to competition)</li>
+        <li>Warm up systematically — hit opener depth in the back room</li>
+      </ol>
+    </div>
+
+    <!-- ===== BACK TO HOME LINK ===== -->
+    <div id="cta-section">
+      <h2>Back to the Main Site</h2>
+      <p>
+        Return to the <a href="index.html" title="Iron Mind Home Page" class="body-link">Home Page</a>
+        to review training principles and programming philosophy.
+      </p>
+    </div>
+
+  </div><!-- end #main-wrapper -->
+
+  <!-- ===== FOOTER ===== -->
+  <div id="footer">
+    <p>Iron Mind Powerlifting &copy; 2026 | Salt Lake City, UT</p>
+  </div>
+
+</body>
+</html>
