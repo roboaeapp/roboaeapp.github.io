@@ -1,0 +1,457 @@
+/* ============================================================
+   styles.css — Iron Mind Powerlifting
+   Aaron Erickson | Section 002 | April 9, 2026
+   External stylesheet covering Chapters 24 and 25 requirements
+   ============================================================ */
+
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (variables for consistency)
+   ============================================================ */
+:root {
+  --dark-bg: #0f0f1a;
+  --panel-bg: #1a1a2e;
+  --accent-gold: #e8c547;
+  --accent-gold-dim: #b89c2e;
+  --text-main: #e2e2e2;
+  --text-muted: #9a9aaa;
+  --nav-height: 58px;
+}
+
+
+/* ============================================================
+   ELEMENT SELECTORS — overriding browser defaults (Ch. 24)
+   ============================================================ */
+
+/* body element selector */
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  /* Background image on body (Chapter 24 — background-image, background-repeat) */
+  background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+  background-repeat: repeat;
+  background-position: top left;
+}
+
+/* h1 element selector */
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--text-main);
+  text-align: center;
+  margin: 0 0 12px 0;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+/* h2 element selector */
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--accent-gold);
+  text-align: left;
+  border-bottom: 2px solid var(--accent-gold-dim);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+  text-decoration: none;
+}
+
+/* h3 element selector */
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c8c8d8;
+  margin-top: 28px;
+}
+
+/* h4 element selector */
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--accent-gold-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* p element selector */
+p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-main);
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+/* a element selector */
+a {
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+/* ul element selector */
+ul {
+  padding-left: 22px;
+}
+
+/* ol element selector */
+ol {
+  padding-left: 22px;
+}
+
+/* li element selector (child element styling — Ch. 24) */
+li {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 4px;
+}
+
+
+/* ============================================================
+   CHILD ELEMENT STYLING (Ch. 24 — cascade to children)
+   Styles li items specifically inside .lift-list and .meet-list
+   ============================================================ */
+
+/* li items inside .lift-list get a custom bullet color */
+.lift-list li {
+  color: #d0d0e0;
+  list-style-type: square;
+}
+
+/* li items inside .meet-list (ordered) get accent color numbers */
+.meet-list li {
+  color: #c8c8c8;
+}
+
+
+/* ============================================================
+   LINK STATE PSEUDO-CLASSES (Ch. 24 — a:hover, a:visited)
+   ============================================================ */
+
+a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--accent-gold-dim);
+  text-decoration: none;
+}
+
+
+/* ============================================================
+   CLASS SELECTORS (Ch. 24 — custom classes)
+   ============================================================ */
+
+/* .highlight — used on span inside h1 headings */
+.highlight {
+  color: var(--accent-gold);
+  font-style: italic;
+}
+
+/* .highlight-text — used inline inside paragraphs */
+.highlight-text {
+  color: var(--accent-gold);
+  font-weight: bold;
+}
+
+/* .nav-link — class for navigation anchor tags */
+.nav-link {
+  color: var(--text-main);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+}
+
+.nav-link:hover {
+  background-color: var(--accent-gold);
+  color: var(--dark-bg);
+  text-decoration: none;
+}
+
+.nav-link:visited {
+  color: var(--text-muted);
+}
+
+/* .body-link — links used within body text */
+.body-link {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.body-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.body-link:visited {
+  color: var(--accent-gold-dim);
+}
+
+/* .float-img — floated image (Ch. 25 — float) */
+.float-img {
+  float: right;
+  margin: 0 0 18px 24px;
+  border: 3px solid var(--accent-gold);
+}
+
+/* .banner-img — full-width banner images */
+.banner-img {
+  display: block;
+  margin: 24px auto;
+  border: 2px solid #333;
+}
+
+
+/* ============================================================
+   BOX MODEL DEMO — padding, border, margin (Ch. 24)
+   ============================================================ */
+
+/* Panels demonstrate the box model:
+   padding  = clears space inside the element (around content)
+   border   = visible boundary with border-style set
+   margin   = transparent space outside the border           */
+
+#about,
+#lifts-section,
+#programming,
+#image-section,
+#cta-section,
+#current-cycle,
+#technique-notes,
+#meet-history,
+#nutrition {
+  background-color: var(--panel-bg);
+  padding: 32px 40px;        /* padding — space inside the element */
+  border: 1px solid #2e2e4a; /* border — visible boundary (border-style: solid) */
+  border-style: solid;       /* border-style explicitly set */
+  margin: 24px auto;         /* margin — transparent space outside the border */
+  max-width: 860px;
+  border-radius: 4px;
+}
+
+
+/* ============================================================
+   ID SELECTORS (Ch. 25 — #id CSS selectors)
+   ============================================================ */
+
+/* Fixed navigation bar (Ch. 25 — position: fixed) */
+#fixed-nav {
+  position: fixed;           /* position: fixed — stays anchored to browser window */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background-color: #0a0a14;
+  border-bottom: 2px solid var(--accent-gold);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 8px;
+  z-index: 1000;             /* z-index: high value keeps nav above all other content */
+  box-sizing: border-box;
+}
+
+/* Hero section */
+#hero {
+  position: relative;       /* relative positioning to contain absolute children */
+  margin-top: var(--nav-height);
+  width: 100%;
+  height: 320px;
+  /* Background image on a div (Ch. 25 requirement) */
+  background-image: url('https://placehold.co/1200x320/0f0f1a/1a1a2e?text=+');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #12122a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ===== ABSOLUTELY POSITIONED ACCENT (Ch. 25 — position: absolute) ===== */
+/* This decorative bar is removed from normal document flow */
+#hero-accent {
+  position: absolute;       /* position: absolute — removed from normal flow */
+  top: 60px;                /* top offset property */
+  left: 0;                  /* left offset property */
+  width: 100%;              /* width explicitly set */
+  height: 90px;             /* height explicitly set */
+  background-color: var(--accent-gold);
+  opacity: 0.08;
+  z-index: 1;               /* z-index: 1 — sits behind the title text */
+}
+
+/* Hero title on top of the accent (higher z-index) */
+#hero-title {
+  position: relative;
+  z-index: 2;               /* z-index: 2 — sits above #hero-accent */
+  text-align: center;
+  padding: 20px 40px;
+}
+
+#hero-title p {
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* page2 hero color variation */
+.page2-hero {
+  background-color: #0d1020 !important;
+}
+
+/* Main content wrapper — normal document flow */
+#main-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* Footer */
+#footer {
+  background-color: #0a0a14;
+  border-top: 2px solid var(--accent-gold);
+  text-align: center;
+  padding: 22px;
+  margin-top: 40px;
+}
+
+#footer p {
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+  margin: 0;
+}
+
+
+/* ============================================================
+   INLINE VS BLOCK ELEMENT BEHAVIOR (Ch. 24 — box model topic)
+   span is inline — it flows with surrounding text and only
+   takes up as much space as its content needs.
+   div is block — it starts on its own line and stretches the
+   full width of its container by default.
+   Both are demonstrated throughout the HTML pages.
+   ============================================================ */
+
+/* span used for inline styling (inline element — flows with text) */
+span.highlight,
+span.highlight-text {
+  /* Inline — these do NOT break to a new line */
+  display: inline;
+}
+
+/* div used as block container — starts on new line, full width */
+/* (div itself is inherently block; no override needed) */
+
+
+/* ============================================================
+   CLEARFIX — clears floats so parent containers expand properly
+   (applies after floated images)
+   ============================================================ */
+#lifts-section::after,
+#current-cycle::after,
+#technique-notes::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+/* ============================================================
+   ADDITIONAL STYLES FOR SCRATCH.HTML (Final Project additions)
+   ============================================================ */
+
+/* Navigation back to professional pages — gold accent */
+.nav-pro {
+  color: var(--accent-gold) !important;
+  font-weight: bold;
+  border-left: 2px solid var(--accent-gold);
+  padding-left: 14px !important;
+  margin-right: 8px;
+}
+
+/* Calculator app nav link — teal/green accent */
+.nav-app {
+  color: #5ecfb0 !important;
+  font-weight: bold;
+}
+
+/* Nested list inside ordered list items (Ch. 23 nested list requirement) */
+.nested-list {
+  margin-top: 6px;
+  margin-bottom: 4px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.nested-list li {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  line-height: 1.6;
+}
+
+/* YouTube video wrapper — centers the iframe responsively */
+#video-section {
+  background-color: var(--panel-bg);
+  padding: 32px 40px;
+  border: 1px solid #2e2e4a;
+  border-style: solid;
+  margin: 24px auto;
+  max-width: 860px;
+  border-radius: 4px;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 12px;
+}
+
+/* Responsive iframe sizing */
+.video-wrapper iframe {
+  max-width: 100%;
+  border: 3px solid var(--accent-gold);
+  border-radius: 4px;
+}
+
+.video-caption {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Tableau section panel */
+#tableau-section {
+  background-color: var(--panel-bg);
+  padding: 32px 40px;
+  border: 1px solid #2e2e4a;
+  border-style: solid;
+  margin: 24px auto;
+  max-width: 860px;
+  border-radius: 4px;
+}
+
+/* Tableau container wrapper */
+.tableau-container {
+  margin-top: 18px;
+  border: 2px solid var(--accent-gold-dim);
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 300px;
+  background-color: #12122a;
+}
