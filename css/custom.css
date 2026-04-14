@@ -1,0 +1,369 @@
+/* ============================================================
+   custom.css — Bootstrap Override Styles
+   Aaron Erickson | IS 201 | Final Web Development Project
+
+   PURPOSE: This file overrides specific Bootstrap defaults
+   to match Aaron's personal brand while keeping the Bootstrap
+   design system intact. Load AFTER bootstrap.min.css.
+   ============================================================ */
+
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (design tokens)
+   ============================================================ */
+:root {
+  --ae-navy:      #1B2A4A;   /* primary dark color */
+  --ae-blue:      #2D5BE3;   /* primary accent blue */
+  --ae-blue-light:#4A78F0;   /* hover / lighter blue */
+  --ae-gold:      #C8A84B;   /* secondary accent gold */
+  --ae-text:      #2B2B3B;   /* body text */
+  --ae-muted:     #6B7280;   /* muted text */
+  --ae-light-bg:  #F8F9FC;   /* light section background */
+  --ae-dark-bg:   #1B2A4A;   /* dark section background */
+  --ae-white:     #FFFFFF;
+  --ae-border:    #E2E8F0;
+}
+
+
+/* ============================================================
+   GLOBAL OVERRIDES
+   ============================================================ */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--ae-text);
+  background-color: var(--ae-white);
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* ============================================================
+   NAVBAR OVERRIDES
+   ============================================================ */
+#main-nav {
+  background-color: var(--ae-navy) !important;
+  border-bottom: 3px solid var(--ae-gold);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+#main-nav .navbar-brand {
+  color: var(--ae-white) !important;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+#main-nav .nav-link {
+  color: rgba(255,255,255,0.85) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#main-nav .nav-link:hover {
+  color: var(--ae-white) !important;
+  background-color: rgba(255,255,255,0.12);
+}
+
+/* "Iron Mind" nav link — special accent style */
+#main-nav .nav-accent {
+  color: var(--ae-gold) !important;
+  font-weight: 600;
+}
+
+#main-nav .nav-accent:hover {
+  background-color: rgba(200,168,75,0.15);
+}
+
+/* Hamburger toggler color */
+#main-nav .navbar-toggler {
+  border-color: rgba(255,255,255,0.3);
+}
+#main-nav .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2c255%2c255%2c0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+#hero {
+  background: linear-gradient(135deg, var(--ae-navy) 0%, #253A6A 100%);
+  padding: 5rem 0 4rem;
+}
+
+.hero-initials-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: var(--ae-gold);
+  color: var(--ae-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero-name {
+  color: var(--ae-white);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  color: var(--ae-gold);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.hero-location {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+}
+
+/* Custom buttons (override Bootstrap btn) */
+.btn-primary-custom {
+  background-color: var(--ae-gold);
+  border: 2px solid var(--ae-gold);
+  color: var(--ae-navy);
+  font-weight: 600;
+  padding: 0.55rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-primary-custom:hover {
+  background-color: transparent;
+  color: var(--ae-gold);
+}
+
+.btn-outline-custom {
+  background-color: transparent;
+  border: 2px solid rgba(255,255,255,0.6);
+  color: var(--ae-white);
+  font-weight: 500;
+  padding: 0.55rem 1.5rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-outline-custom:hover {
+  background-color: rgba(255,255,255,0.12);
+  border-color: var(--ae-white);
+  color: var(--ae-white);
+}
+
+
+/* ============================================================
+   SECTION BACKGROUNDS
+   ============================================================ */
+.section-light {
+  background-color: var(--ae-light-bg);
+}
+
+.section-dark {
+  background-color: var(--ae-white);
+}
+
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+.section-heading {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ae-navy);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--ae-gold);
+  border-radius: 2px;
+}
+
+/* For left-aligned headings */
+.section-heading.text-start::after {
+  left: 0;
+  transform: none;
+}
+
+
+/* ============================================================
+   BADGE OVERRIDES
+   ============================================================ */
+.badge-custom {
+  background-color: var(--ae-navy);
+  color: var(--ae-white);
+  font-weight: 500;
+  padding: 0.45rem 0.85rem;
+  border-radius: 20px;
+}
+
+.badge-date {
+  background-color: var(--ae-navy);
+  color: var(--ae-gold);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.skill-badge {
+  background-color: var(--ae-light-bg);
+  color: var(--ae-navy);
+  border: 1px solid var(--ae-border);
+  font-weight: 500;
+  font-size: 0.82rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+}
+
+
+/* ============================================================
+   CARD OVERRIDES
+   ============================================================ */
+.exp-card,
+.edu-card,
+.skill-card {
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exp-card:hover,
+.edu-card:hover,
+.skill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(27, 42, 74, 0.12) !important;
+}
+
+/* Accent colored text */
+.text-accent {
+  color: var(--ae-blue) !important;
+}
+
+/* Experience list */
+.exp-list {
+  padding-left: 1.2rem;
+  margin-bottom: 0;
+}
+
+.exp-list li {
+  font-size: 0.93rem;
+  color: var(--ae-text);
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+
+.exp-note {
+  font-size: 0.93rem;
+  color: var(--ae-muted);
+  line-height: 1.6;
+}
+
+/* Education list */
+.edu-list {
+  padding-left: 1.2rem;
+  margin-bottom: 0;
+}
+
+.edu-list li {
+  font-size: 0.9rem;
+  color: var(--ae-text);
+  margin-bottom: 0.3rem;
+}
+
+/* Education icon wrapper */
+.edu-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgba(45, 91, 227, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-icon {
+  font-size: 1.4rem;
+  color: var(--ae-blue);
+}
+
+/* Skill category heading */
+.skill-category {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ae-navy);
+  border-bottom: 2px solid var(--ae-gold);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
+
+/* ============================================================
+   TABLEAU WRAPPER
+   ============================================================ */
+.tableau-wrapper {
+  width: 100%;
+  min-height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ae-border);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+#footer {
+  background-color: var(--ae-navy);
+  border-top: 3px solid var(--ae-gold);
+}
+
+.footer-link {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--ae-gold);
+  text-decoration: none;
+}
+
+.footer-copy {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.82rem;
+  margin: 0;
+}
+
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-name { font-size: 2rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .section-heading { font-size: 1.5rem; }
+  #hero { padding: 3.5rem 0 2.5rem; }
+}
