@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<!-- Aaron Erickson | IS 201 Section 002 | Final Web Development Project -->
+<!-- app.html — Web App: Iron Mind Powerlifting Calculator
+     Built in collaboration with AI. All styles, HTML, and JavaScript
+     are contained in this single file per assignment requirements.
+     Features: Wilks Score, IPF GL Points, Attempt Selection.          -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iron Mind Calculator | Powerlifting Tools</title>
+
+  <!-- ===== ALL STYLES IN THIS FILE (single-page app requirement) ===== -->
+  <style>
+
+    /* ========================
+       CSS CUSTOM PROPERTIES
+    ======================== */
+    :root {
+      --dark-bg:     #0f0f1a;
+      --panel-bg:    #1a1a2e;
+      --card-bg:     #1e1e35;
+      --accent-gold: #e8c547;
+      --accent-dim:  #b89c2e;
+      --accent-green:#4ade80;
+      --accent-red:  #f87171;
+      --text-main:   #e2e2e2;
+      --text-muted:  #8888aa;
+      --border-col:  #2e2e4a;
+      --nav-height:  58px;
+    }
+
+    /* ========================
+       RESET & BODY
+    ======================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      padding-top: var(--nav-height);
+    }
+
+    /* ========================
+       NAVIGATION
+    ======================== */
+    #app-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background-color: #0a0a14;
+      border-bottom: 2px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 8px;
+      z-index: 1000;
+    }
+
+    #app-nav .nav-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-family: 'Courier New', monospace;
+      margin-right: auto;
+    }
+
+    #app-nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--border-col);
+      transition: all 0.2s;
+    }
+
+    #app-nav a:hover {
+      background-color: var(--accent-gold);
+      color: var(--dark-bg);
+      border-color: var(--accent-gold);
+    }
+
+    /* ========================
+       PAGE HEADER
+    ======================== */
+    #page-header {
+      background: linear-gradient(135deg, #12122a, #1a1a3a);
+      border-bottom: 2px solid var(--border-col);
+      text-align: center;
+      padding: 40px 20px 32px;
+    }
+
+    #page-header h1 {
+      font-family: 'Courier New', monospace;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text-main);
+      letter-spacing: 1px;
+    }
+
+    #page-header h1 span {
+      color: var(--accent-gold);
+    }
+
+    #page-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+
+    /* ========================
+       MAIN CONTAINER
+    ======================== */
+    #app-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    /* ========================
+       TAB NAVIGATION
+    ======================== */
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 28px;
+      border-bottom: 2px solid var(--border-col);
+      padding-bottom: 0;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -2px;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--accent-gold);
+      border-bottom-color: var(--accent-gold);
+    }
+
+    /* ========================
+       TAB PANELS
+    ======================== */
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ========================
+       CARDS
+    ======================== */
+    .card {
+      background-color: var(--panel-bg);
+      border: 1px solid var(--border-col);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-family: 'Courier New', monospace;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      border-bottom: 2px solid var(--accent-dim);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* ========================
+       FORM INPUTS
+    ======================== */
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input[type="number"],
+    select {
+      background-color: #12122a;
+      border: 1.5px solid var(--border-col);
+      color: var(--text-main);
+      font-size: 1rem;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      border-color: var(--accent-gold);
+    }
+
+    /* ========================
+       BUTTONS
+    ======================== */
+    .btn-calc {
+      background-color: var(--accent-gold);
+      color: var(--dark-bg);
+      border: none;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+      transition: background-color 0.2s, transform 0.1s;
+      margin-top: 4px;
+    }
+
+    .btn-calc:hover {
+      background-color: #f5d666;
+    }
+
+    .btn-calc:active {
+      transform: scale(0.98);
+    }
+
+    .btn-reset {
+      background: none;
+      color: var(--text-muted);
+      border: 1px solid var(--border-col);
+      font-size: 0.85rem;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      margin-left: 10px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-reset:hover {
+      color: var(--text-main);
+      border-color: var(--text-muted);
+    }
+
+    /* ========================
+       RESULTS DISPLAY
+    ======================== */
+    .result-box {
+      display: none;
+      margin-top: 24px;
+      background-color: var(--card-bg);
+      border: 2px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 24px 28px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .result-box.show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .result-item {
+      text-align: center;
+      padding: 16px 12px;
+      background-color: #12122a;
+      border-radius: 6px;
+      border: 1px solid var(--border-col);
+    }
+
+    .result-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .result-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-family: 'Courier New', monospace;
+    }
+
+    .result-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ========================
+       ATTEMPT TABLE
+    ======================== */
+    .attempt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    .attempt-table th {
+      background-color: #12122a;
+      color: var(--accent-gold);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--accent-dim);
+    }
+
+    .attempt-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-col);
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .attempt-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .attempt-table tr:hover td {
+      background-color: rgba(232,197,71,0.04);
+    }
+
+    .badge-opener {
+      background-color: rgba(74,222,128,0.15);
+      color: var(--accent-green);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge-second {
+      background-color: rgba(232,197,71,0.15);
+      color: var(--accent-gold);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge-third {
+      background-color: rgba(248,113,113,0.15);
+      color: var(--accent-red);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* ========================
+       INFO BOXES
+    ======================== */
+    .info-box {
+      background-color: rgba(232,197,71,0.08);
+      border-left: 4px solid var(--accent-gold);
+      padding: 14px 18px;
+      border-radius: 0 6px 6px 0;
+      margin: 16px 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ========================
+       ERROR STATE
+    ======================== */
+    .error-msg {
+      display: none;
+      color: var(--accent-red);
+      font-size: 0.85rem;
+      margin-top: 8px;
+      padding: 10px 14px;
+      background-color: rgba(248,113,113,0.1);
+      border-radius: 4px;
+      border: 1px solid rgba(248,113,113,0.3);
+    }
+
+    .error-msg.show {
+      display: block;
+    }
+
+    /* ========================
+       FOOTER
+    ======================== */
+    #app-footer {
+      background-color: #0a0a14;
+      border-top: 2px solid var(--accent-gold);
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    #app-footer p {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    /* ========================
+       RESPONSIVE
+    ======================== */
+    @media (max-width: 600px) {
+      .card { padding: 20px 18px; }
+      #page-header h1 { font-size: 1.6rem; }
+      .tab-btn { padding: 8px 12px; font-size: 0.85rem; }
+      .result-value { font-size: 1.5rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="app-nav">
+    <span class="nav-brand">&#9889; Iron Mind Calculator</span>
+    <a href="scratch.html" title="Back to Iron Mind Powerlifting">Iron Mind &#8598;</a>
+    <a href="index.html" title="Aaron's Portfolio">Portfolio &#8598;</a>
+  </nav>
+
+  <!-- ===== PAGE HEADER ===== -->
+  <header id="page-header">
+    <h1>Powerlifting <span>Calculator</span></h1>
+    <p>Wilks Score &bull; IPF GL Points &bull; Attempt Selection</p>
+  </header>
+
+  <!-- ===== MAIN APP ===== -->
+  <main id="app-container">
+
+    <!-- ===== TAB BAR ===== -->
+    <div class="tab-bar" role="tablist">
+      <button class="tab-btn active" onclick="switchTab('wilks', this)" role="tab">Wilks Score</button>
+      <button class="tab-btn"        onclick="switchTab('ipf',   this)" role="tab">IPF GL Points</button>
+      <button class="tab-btn"        onclick="switchTab('attempts', this)" role="tab">Attempt Selector</button>
+    </div>
+
+    <!-- ===================================================
+         TAB 1: WILKS SCORE CALCULATOR
+    =================================================== -->
+    <div id="tab-wilks" class="tab-panel active">
+      <div class="card">
+        <h2>&#128170; Wilks Score Calculator</h2>
+        <p>
+          The Wilks Score is a coefficient used in powerlifting to compare lifters of
+          different body weights. Enter your body weight, total, and sex to calculate
+          your Wilks Score.
+        </p>
+
+        <div class="info-box">
+          <strong>Formula:</strong> Wilks = Total &times; (500 &divide; (a + b&middot;BW + c&middot;BW&sup2; + d&middot;BW&sup3; + e&middot;BW&#8308; + f&middot;BW&#8309;))
+          &nbsp;&mdash;&nbsp; coefficients differ by sex. A score of 400+ is competitive nationally.
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="wilks-sex">Sex</label>
+            <select id="wilks-sex">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="wilks-bw">Body Weight</label>
+            <input type="number" id="wilks-bw" placeholder="e.g. 93" min="40" max="200" step="0.1" />
+          </div>
+          <div class="form-group">
+            <label for="wilks-unit-bw">Unit</label>
+            <select id="wilks-unit-bw">
+              <option value="kg">kg</option>
+              <option value="lb">lb</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="wilks-total">Total (Squat + Bench + Deadlift)</label>
+            <input type="number" id="wilks-total" placeholder="e.g. 600" min="1" step="0.5" />
+          </div>
+          <div class="form-group">
+            <label for="wilks-unit-total">Unit</label>
+            <select id="wilks-unit-total">
+              <option value="kg">kg</option>
+              <option value="lb">lb</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn-calc" onclick="calcWilks()">Calculate Wilks</button>
+          <button class="btn-reset" onclick="resetWilks()">Reset</button>
+        </div>
+
+        <div id="wilks-error" class="error-msg">Please enter valid body weight and total values.</div>
+
+        <div id="wilks-result" class="result-box">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-label">Wilks Score</div>
+              <div class="result-value" id="wilks-score">—</div>
+              <div class="result-sub">points</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Total (kg)</div>
+              <div class="result-value" id="wilks-total-kg">—</div>
+              <div class="result-sub">kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Body Weight (kg)</div>
+              <div class="result-value" id="wilks-bw-kg">—</div>
+              <div class="result-sub">kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Rating</div>
+              <div class="result-value" id="wilks-rating" style="font-size: 1.2rem;">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         TAB 2: IPF GL POINTS CALCULATOR
+    =================================================== -->
+    <div id="tab-ipf" class="tab-panel">
+      <div class="card">
+        <h2>&#127942; IPF GL Points Calculator</h2>
+        <p>
+          IPF GL (Good Lift) Points are the official scoring system used at IPF World
+          Championships. They provide a more accurate cross-bodyweight comparison than
+          the original Wilks formula.
+        </p>
+
+        <div class="info-box">
+          <strong>Formula:</strong> GL Points = 100 &times; Total &divide; (a &times; BW<sup>0.75</sup> &minus; b &times; BW<sup>0.25</sup> &minus; c)
+          &nbsp;&mdash;&nbsp; with separate coefficients for each sex. 500 GL Points is an elite benchmark.
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ipf-sex">Sex</label>
+            <select id="ipf-sex">
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ipf-bw">Body Weight</label>
+            <input type="number" id="ipf-bw" placeholder="e.g. 93" min="40" max="200" step="0.1" />
+          </div>
+          <div class="form-group">
+            <label for="ipf-unit-bw">Unit</label>
+            <select id="ipf-unit-bw">
+              <option value="kg">kg</option>
+              <option value="lb">lb</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ipf-total">Total (Squat + Bench + Deadlift)</label>
+            <input type="number" id="ipf-total" placeholder="e.g. 600" min="1" step="0.5" />
+          </div>
+          <div class="form-group">
+            <label for="ipf-unit-total">Unit</label>
+            <select id="ipf-unit-total">
+              <option value="kg">kg</option>
+              <option value="lb">lb</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn-calc" onclick="calcIPF()">Calculate GL Points</button>
+          <button class="btn-reset" onclick="resetIPF()">Reset</button>
+        </div>
+
+        <div id="ipf-error" class="error-msg">Please enter valid body weight and total values.</div>
+
+        <div id="ipf-result" class="result-box">
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-label">GL Points</div>
+              <div class="result-value" id="ipf-score">—</div>
+              <div class="result-sub">IPF GL points</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Total (kg)</div>
+              <div class="result-value" id="ipf-total-kg">—</div>
+              <div class="result-sub">kg</div>
+            </div>
+            <div class="result-item">
+              <div class="result-label">Rank</div>
+              <div class="result-value" id="ipf-rank" style="font-size: 1.2rem;">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================
+         TAB 3: ATTEMPT SELECTOR
+    =================================================== -->
+    <div id="tab-attempts" class="tab-panel">
+      <div class="card">
+        <h2>&#127919; Meet Attempt Selector</h2>
+        <p>
+          Enter your training maxes (best lifts in a training block) and this tool will
+          recommend opening attempts, second attempts, and competition PR thirds for
+          your next meet. Based on industry-standard attempt selection percentages.
+        </p>
+
+        <div class="info-box">
+          <strong>Strategy:</strong> Opener = a weight you could triple on a bad day (~90&ndash;92% of max).
+          Second = conservative PR territory (~97&ndash;100%). Third = stretch PR or competition record (&gt;100%).
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="att-unit">Weight Unit</label>
+            <select id="att-unit">
+              <option value="lbs">lbs</option>
+              <option value="kg">kg</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="att-squat">Squat Training Max</label>
+            <input type="number" id="att-squat" placeholder="e.g. 500" min="1" step="2.5" />
+          </div>
+          <div class="form-group">
+            <label for="att-bench">Bench Training Max</label>
+            <input type="number" id="att-bench" placeholder="e.g. 300" min="1" step="2.5" />
+          </div>
+          <div class="form-group">
+            <label for="att-dead">Deadlift Training Max</label>
+            <input type="number" id="att-dead" placeholder="e.g. 560" min="1" step="2.5" />
+          </div>
+        </div>
+
+        <div>
+          <button class="btn-calc" onclick="calcAttempts()">Generate Attempt Plan</button>
+          <button class="btn-reset" onclick="resetAttempts()">Reset</button>
+        </div>
+
+        <div id="att-error" class="error-msg">Please enter valid values for at least one lift.</div>
+
+        <div id="att-result" class="result-box">
+          <div id="att-table-container"></div>
+          <div style="margin-top: 16px; font-size: 0.82rem; color: var(--text-muted);">
+            <strong>Note:</strong> These are recommendations only. Adjust based on your warm-up
+            performance, competition conditions, and coaching guidance. Always prioritize the opener
+            — a successful opener builds momentum for the entire session.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="app-footer">
+    <p>Iron Mind Powerlifting Calculator &copy; 2026 &mdash; Aaron Erickson | IS 201 Final Project</p>
+    <p style="margin-top: 6px;">
+      <a href="scratch.html" style="color: var(--accent-gold); text-decoration: none;">&#8592; Back to Iron Mind</a>
+      &nbsp;&bull;&nbsp;
+      <a href="index.html" style="color: var(--accent-gold); text-decoration: none;">Portfolio &#8594;</a>
+    </p>
+  </footer>
+
+
+  <!-- ===== ALL JAVASCRIPT IN THIS FILE (single-page app requirement) ===== -->
+  <script>
+
+    /* ============================================================
+       TAB SWITCHER
+    ============================================================ */
+    function switchTab(tabId, btnEl) {
+      // Hide all panels
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      // Deactivate all buttons
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      // Show selected panel
+      document.getElementById('tab-' + tabId).classList.add('active');
+      // Activate clicked button
+      btnEl.classList.add('active');
+    }
+
+
+    /* ============================================================
+       UTILITY FUNCTIONS
+    ============================================================ */
+
+    /** Convert lbs to kg */
+    function toKg(val, unit) {
+      return unit === 'lb' ? val / 2.20462 : val;
+    }
+
+    /** Round to nearest increment (default 2.5 kg or 5 lb) */
+    function roundToIncrement(val, unit) {
+      const inc = (unit === 'lbs') ? 5 : 2.5;
+      return Math.round(val / inc) * inc;
+    }
+
+    /** Rating label for Wilks score */
+    function wilksRating(score) {
+      if (score >= 500) return '&#127942; World Class';
+      if (score >= 450) return '&#129351; Elite';
+      if (score >= 400) return '&#129352; National';
+      if (score >= 350) return '&#129353; State Level';
+      if (score >= 300) return '&#128170; Competitive';
+      if (score >= 200) return '&#128293; Intermediate';
+      return '&#127381; Beginner';
+    }
+
+    /** Rating label for IPF GL Points */
+    function ipfRating(score) {
+      if (score >= 600) return '&#127942; World Record Territory';
+      if (score >= 550) return '&#129351; World Class';
+      if (score >= 500) return '&#129352; Elite';
+      if (score >= 400) return '&#128170; National Level';
+      if (score >= 300) return '&#128293; Competitive';
+      return '&#127381; Developing';
+    }
+
+
+    /* ============================================================
+       WILKS SCORE CALCULATOR
+       Classic Wilks formula (original, not 2020 update)
+       Male   coefficients: a-f below
+       Female coefficients: a-f below
+    ============================================================ */
+
+    const WILKS_COEFF = {
+      M: { a: -216.0475144, b: 16.2606339,  c: -0.002388645, d: -0.00113732,  e: 7.01863e-6,  f: -1.291e-8  },
+      F: { a:  594.3174778, b: -27.2384254, c:  0.82112227,  d: -0.00930734,  e: 4.731582e-5, f: -9.054e-8  }
+    };
+
+    function calcWilksCofficient(bwKg, sex) {
+      const c = WILKS_COEFF[sex];
+      const bw = bwKg;
+      const denom = c.a + c.b*bw + c.c*bw**2 + c.d*bw**3 + c.e*bw**4 + c.f*bw**5;
+      return 500 / denom;
+    }
+
+    function calcWilks() {
+      const sex       = document.getElementById('wilks-sex').value;
+      const bwRaw     = parseFloat(document.getElementById('wilks-bw').value);
+      const bwUnit    = document.getElementById('wilks-unit-bw').value;
+      const totalRaw  = parseFloat(document.getElementById('wilks-total').value);
+      const totalUnit = document.getElementById('wilks-unit-total').value;
+
+      const errEl    = document.getElementById('wilks-error');
+      const resultEl = document.getElementById('wilks-result');
+
+      if (isNaN(bwRaw) || bwRaw <= 0 || isNaN(totalRaw) || totalRaw <= 0) {
+        errEl.classList.add('show');
+        resultEl.classList.remove('show');
+        return;
+      }
+      errEl.classList.remove('show');
+
+      const bwKg    = toKg(bwRaw, bwUnit);
+      const totalKg = toKg(totalRaw, totalUnit);
+      const coeff   = calcWilksCofficient(bwKg, sex);
+      const score   = totalKg * coeff;
+
+      document.getElementById('wilks-score').textContent    = score.toFixed(2);
+      document.getElementById('wilks-total-kg').textContent = totalKg.toFixed(2);
+      document.getElementById('wilks-bw-kg').textContent    = bwKg.toFixed(2);
+      document.getElementById('wilks-rating').innerHTML     = wilksRating(score);
+
+      resultEl.classList.add('show');
+    }
+
+    function resetWilks() {
+      ['wilks-bw','wilks-total'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('wilks-result').classList.remove('show');
+      document.getElementById('wilks-error').classList.remove('show');
+    }
+
+
+    /* ============================================================
+       IPF GL POINTS CALCULATOR
+       Formula: GL = 100 × Total / (a × BW^0.75 − b × BW^0.25 − c)
+       Coefficients for raw total (Classic Raw):
+    ============================================================ */
+
+    const IPF_COEFF = {
+      M: { a: 1199.72839, b: 1025.18162, c: 0.00921 },
+      F: { a:  610.32796, b:  1045.59282, c: 0.03048 }
+    };
+
+    function calcIPF() {
+      const sex       = document.getElementById('ipf-sex').value;
+      const bwRaw     = parseFloat(document.getElementById('ipf-bw').value);
+      const bwUnit    = document.getElementById('ipf-unit-bw').value;
+      const totalRaw  = parseFloat(document.getElementById('ipf-total').value);
+      const totalUnit = document.getElementById('ipf-unit-total').value;
+
+      const errEl    = document.getElementById('ipf-error');
+      const resultEl = document.getElementById('ipf-result');
+
+      if (isNaN(bwRaw) || bwRaw <= 0 || isNaN(totalRaw) || totalRaw <= 0) {
+        errEl.classList.add('show');
+        resultEl.classList.remove('show');
+        return;
+      }
+      errEl.classList.remove('show');
+
+      const bwKg    = toKg(bwRaw, bwUnit);
+      const totalKg = toKg(totalRaw, totalUnit);
+      const c       = IPF_COEFF[sex];
+
+      const denom = c.a * Math.pow(bwKg, 0.75) - c.b * Math.pow(bwKg, 0.25) - c.c;
+      const score = (denom <= 0) ? 0 : 100 * totalKg / denom;
+
+      document.getElementById('ipf-score').textContent    = score.toFixed(2);
+      document.getElementById('ipf-total-kg').textContent = totalKg.toFixed(2);
+      document.getElementById('ipf-rank').innerHTML       = ipfRating(score);
+
+      resultEl.classList.add('show');
+    }
+
+    function resetIPF() {
+      ['ipf-bw','ipf-total'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('ipf-result').classList.remove('show');
+      document.getElementById('ipf-error').classList.remove('show');
+    }
+
+
+    /* ============================================================
+       ATTEMPT SELECTOR
+       Opener  ~91% of training max
+       Second  ~98% of training max  (or opener + 5-10kg)
+       Third   ~103% of training max (competition PR target)
+    ============================================================ */
+
+    function calcAttempts() {
+      const unit   = document.getElementById('att-unit').value;
+      const squat  = parseFloat(document.getElementById('att-squat').value);
+      const bench  = parseFloat(document.getElementById('att-bench').value);
+      const dead   = parseFloat(document.getElementById('att-dead').value);
+
+      const errEl    = document.getElementById('att-error');
+      const resultEl = document.getElementById('att-result');
+
+      if (isNaN(squat) && isNaN(bench) && isNaN(dead)) {
+        errEl.classList.add('show');
+        resultEl.classList.remove('show');
+        return;
+      }
+      errEl.classList.remove('show');
+
+      const lifts = [
+        { name: 'Squat',    max: squat },
+        { name: 'Bench',    max: bench },
+        { name: 'Deadlift', max: dead  }
+      ].filter(l => !isNaN(l.max) && l.max > 0);
+
+      let tableHTML = `
+        <table class="attempt-table">
+          <thead>
+            <tr>
+              <th>Lift</th>
+              <th>Training Max (${unit})</th>
+              <th>Attempt</th>
+              <th>Weight (${unit})</th>
+              <th>% of Max</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+      let projectedTotal = 0;
+
+      lifts.forEach(lift => {
+        const opener = roundToIncrement(lift.max * 0.910, unit);
+        const second = roundToIncrement(lift.max * 0.975, unit);
+        const third  = roundToIncrement(lift.max * 1.025, unit);
+
+        projectedTotal += second; // conservative projected total uses 2nd attempts
+
+        tableHTML += `
+          <tr>
+            <td rowspan="3" style="font-weight:700; color:var(--accent-gold); vertical-align:middle;">${lift.name}</td>
+            <td rowspan="3" style="text-align:center; font-family:'Courier New',monospace; font-size:1.1rem; vertical-align:middle;">${lift.max.toFixed(1)}</td>
+            <td><span class="badge-opener">1st — Opener</span></td>
+            <td><strong>${opener.toFixed(1)}</strong></td>
+            <td style="color:var(--text-muted);">${(opener/lift.max*100).toFixed(1)}%</td>
+          </tr>
+          <tr>
+            <td><span class="badge-second">2nd — Solid PR</span></td>
+            <td><strong>${second.toFixed(1)}</strong></td>
+            <td style="color:var(--text-muted);">${(second/lift.max*100).toFixed(1)}%</td>
+          </tr>
+          <tr>
+            <td><span class="badge-third">3rd — Max Attempt</span></td>
+            <td><strong>${third.toFixed(1)}</strong></td>
+            <td style="color:var(--text-muted);">${(third/lift.max*100).toFixed(1)}%</td>
+          </tr>`;
+      });
+
+      tableHTML += `</tbody></table>`;
+
+      // Add projected total row if all 3 lifts are entered
+      if (lifts.length === 3) {
+        const totalThirds = lifts.reduce((sum, l) => sum + roundToIncrement(l.max * 1.025, unit), 0);
+        tableHTML += `
+          <div style="margin-top:16px; padding:14px 18px; background:#12122a; border-radius:6px; border:1px solid var(--border-col);">
+            <span style="color:var(--text-muted); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px;">
+              Projected Total (2nd attempts):
+            </span>
+            <span style="font-size:1.5rem; font-weight:700; color:var(--accent-gold); font-family:'Courier New',monospace; margin-left:12px;">
+              ${projectedTotal.toFixed(1)} ${unit}
+            </span>
+            <span style="color:var(--text-muted); font-size:0.85rem; margin-left:8px;">
+              &nbsp;|&nbsp; Thirds: ${totalThirds.toFixed(1)} ${unit}
+            </span>
+          </div>`;
+      }
+
+      document.getElementById('att-table-container').innerHTML = tableHTML;
+      resultEl.classList.add('show');
+    }
+
+    function resetAttempts() {
+      ['att-squat','att-bench','att-dead'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('att-result').classList.remove('show');
+      document.getElementById('att-error').classList.remove('show');
+    }
+
+  </script>
+
+</body>
+</html>
