@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- Aaron Erickson | IS 201 Section 002 | Final Web Development Project -->
+<!-- index.html — Bootstrap Professional Portfolio & Résumé Page -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaron Erickson | Portfolio</title>
+
+  <!-- ===== BOOTSTRAP 5 CDN (framework CSS) ===== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- ===== BOOTSTRAP ICONS ===== -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- ===== CUSTOM OVERRIDES (must come AFTER Bootstrap to take precedence) ===== -->
+  <link rel="stylesheet" href="css/custom.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       NAVBAR — Bootstrap sticky navbar component
+       ===================================================================== -->
+  <nav class="navbar navbar-expand-lg sticky-top" id="main-nav">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Aaron Erickson</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link nav-accent" href="scratch.html">Iron Mind ↗</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =====================================================================
+       HERO SECTION — Bootstrap jumbotron-style header
+       ===================================================================== -->
+  <section id="hero">
+    <div class="container text-center py-5">
+      <div class="hero-initials-circle mx-auto mb-4">AE</div>
+      <h1 class="hero-name">Aaron Erickson</h1>
+      <p class="hero-subtitle">Finance Student &amp; Commercial Real Estate Professional</p>
+      <p class="hero-location">
+        <i class="bi bi-geo-alt-fill"></i> South Jordan, UT &nbsp;&bull;&nbsp;
+        <i class="bi bi-mortarboard-fill"></i> Brigham Young University
+      </p>
+      <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+        <a href="#experience" class="btn btn-primary-custom">View Experience</a>
+        <a href="#skills" class="btn btn-outline-custom">View Skills</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       ABOUT SECTION
+       ===================================================================== -->
+  <section id="about" class="py-5 section-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="section-heading text-center mb-4">
+            <i class="bi bi-person-fill me-2"></i>About Me
+          </h2>
+          <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+              <p class="lead mb-3">
+                I'm a self-driven, solutions-focused professional with a strong entrepreneurial spirit
+                and a passion for commercial real estate.
+              </p>
+              <p class="mb-3">
+                I take pride in identifying and solving problems efficiently, maintaining professionalism,
+                and adapting quickly to changing environments. With sharp attention to detail, I
+                consistently meet deadlines, exceed expectations, and support team goals.
+              </p>
+              <p class="mb-0">
+                Before graduating high school, I successfully launched and operated two businesses—an
+                experience that shaped my proactive mindset and client-first approach. I also served as
+                a missionary in São Paulo, Brazil and Tampa, Florida, which gave me fluency in Portuguese
+                and a deep appreciation for cross-cultural communication.
+              </p>
+            </div>
+          </div>
+
+          <!-- Language badges using Bootstrap badge component -->
+          <div class="mt-4 text-center">
+            <h5 class="mb-3 text-muted">Languages</h5>
+            <span class="badge badge-custom me-2 fs-6">
+              <i class="bi bi-translate me-1"></i>English — Native
+            </span>
+            <span class="badge badge-custom me-2 fs-6">
+              <i class="bi bi-translate me-1"></i>Portuguese — Fluent
+            </span>
+            <span class="badge badge-custom fs-6">
+              <i class="bi bi-translate me-1"></i>Spanish — Proficient
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>%�ٚX�Y[����[����]����]����]����]�����X�[ۏ���KKHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOB�VT�QS��H�P�Sӈ8�%�����\�\�ܚY�OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOHKO���X�[ۈYH�^\�Y[��H��\��H�KMH�X�[ۋY\�ȏ��]��\��H��۝Z[�\������\��H��X�[ۋZXY[��^X�[�\�X�MH���H�\��H��H�KX��YY��\�KY�[YKL����O�^\�Y[��B������KKH^\�Y[��H[Y[[�H\�[�������\�\��KO��]��\��H�����M����KKH�]�X\��KO��]��\��H���LL����]��\��H��\�^X�\��Y��\�H�ܙ\�L���]��\��H��\�X��HM���]��\��H�Y�^�\�Y�KX�۝[�X�]�Y[�[YۋZ][\�\�\��^]ܘ\�\L����]���
+�\��H��\�]]HX�LH���[��X�[ۈ�\��X�\���ܙ[�]܏�
+��
+H�\��H��\�\�X�]H^XX��[�X�L����]�X\��	�Y\���[Z�H�]KU�
+O���]����[��\��H��Y�H�Y�KY]H���݈��8�$��\�[���[����]���[�\��H�]L�^[\����O��\ܝYH�\��X�[������\�Y�HX[H�\�ۜ�X�H�܈��ۙόLMSJ��H����ۙψ[��[��X�[ۜ�[��Y[��͓J�ш��[�
+�J�шX\�YXܛ���[�\��X[[���[Y\��X[\��]ˏ�O��O�XZ[�Z[�[�\]H]X�\�\��܈��\�H[��[�ܞK�ۙ\��\X\�K��[H\�[�����\�[�[��[�����[�[��\�[��X��\�X�H[�]H[�Yܚ]K��O��O���X�ܘ]H�]X\��][���\�X\��[��[�[��HX[\��[�Yܘ]H]H[������[�ٙ�\�[��Y[[��[��\��H�\ܝˏ�O��O�X[�Y�H[�\]HԓH[����X�[��]X�\�\���\ܝ�\�[�\��]�[�Y[�[�XY�[�\�][ۋ��O��O��\ܝ����\��]�XX��]���[[����\�H�\��[��Y[��\�[�][ۜˏ�O���[���]����]����]����KKH�[\��[X[\�KO��]��\��H���LL����]��\��H��\�^X�\��Y��\�H�ܙ\�L���]��\��H��\�X��HM���]��\��H�Y�^�\�Y�KX�۝[�X�]�Y[�[YۋZ][\�\�\��^]ܘ\�\L����]���
+�\��H��\�]]HX�LH���\�][ۜ�X[�Y�\�	�[\�\��\�[�X[HXY�
+��
+H�\��H��\�\�X�]H^XX��[�X�L����[\��[X[\���]�[^H�X[\�]H	�Y\����]�ܙ[�U�
+O���]����[��\��H��Y�H�Y�KY]H��X\����8�$��݈����[����]���[�\��H�]L�^[\����O�ܙX]Y[�X[�Y�YHXY\[[�K�[�\�][��]X[]H�Y�\��[��܈Y�[��[��X��[���X��\��Y]�X�ˏ�O��O�XZ[�Z[�YԓH[��X[\�]H]�ܛ\�[��\�[��X��\�]H]H�\\�H[���X[[[�Y�\ܝ[�ˏ�O��O��Z[�Y�]�Y�[��ۈ�T��X�Y\�[�[�\��[�ٝ�\�K[�[��[����\X[��H[�]H][^�][ۋ��O��O�ܙ�[�^�Y�\�Y�YY[�[ۚ]ܙY\��]�[��[��X�[ۜ�[��\�[����\X[��H[�Y�]HX��\�X�K��O��O�[��Y[�X[�Y�Y]�[��و�\�Z[����[\�\�[��]KY�]�[�[��Y���[Yۈ��\�X���]ܙ�[�^�][ۘ[ؚ�X�]�\ˏ�O���[���]����]����]����KKH�����\��KO��]��\��H���[YM����]��\��H��\�^X�\��Y��\�H�ܙ\�LLL���]��\��H��\�X��HM���]��\��H�Y�^�\�Y�KX�۝[�X�]�Y[�[YۋZ][\�\�\��^]ܘ\�\L����]���
+�\��H��\�]]HX�LH���ܙHX[�Y�\��
+��
+H�\��H��\�\�X�]H^XX��[�X�L��������\��	�Y\��\��[X[�U�
+O���]����[��\��H��Y�H�Y�KY]H���݈��H8�$�X^H�����[����]���[�\��H�]L�^[\����O�XZ[�Z[�YH
+�K\�\�����H�]�Y]��Hݙ\��YZ[���\��Y\��[][ۜˏ�O��O��X��Y[��\ܝY�\�[�\��\��ܛX[��H[��YZ�H�[�ˏ�O��O��ۙX�YZ[HX[HYY][����[Yۈ[\�YY\��]X[Hؚ�X�]�\ˏ�O���[���]����]����]����KKHX[[ۙ[��\��^Z[��KO��]��\��H���[YM����]��\��H��\�^X�\��Y��\�H�ܙ\�LLL���]��\��H��\�X��HM���]��\��H�Y�^�\�Y�KX�۝[�X�]�Y[�[YۋZ][\�\�\��^]ܘ\�\L����]���
+�\��H��\�]]HX�LH��ܙ]�Y[X�\��
+��
+H�\��H��\�\�X�]H^XX��[�X�L���X[[ۙ[��\��^Z[��	�Y\��ZY�[KU�
+O���]����[��\��H��Y�H�Y�KY]H���[��N8�$��݈�NO��[����]���[�\��H�]L�^[\����O�YX\�\�Y�X�\�H��\�H[�\�[���ܘ\H]H�܈�ݙ\��Y[���[Y\��X[[��\�Y[�X[�۝�X�ˏ�O��O��\�]Y��\^[���[Y[��[�\�YYYX\�\�[Y[�]H�H[�\��[�\��\��܈�\ܝ[�ˏ�O���[���]����]����]����KKHZ\��[ۈKO��]��\��H���LL����]��\��H��\�^X�\��Y��\�H�ܙ\�L���]��\��H��\�X��HM���]��\��H�Y�^�\�Y�KX�۝[�X�]�Y[�[YۋZ][\�\�\��^]ܘ\�\L����]���
+�\��H��\�]]HX�LH�����[]^�[��Z\��[ۘ\�O�
+��
+H�\��H��\�\�X�]H^XX��[�X�L���H�\��و�\�\���\�و�	�Y\������][���^�[�[\K�ܚYO�
+O���]����[��\��H��Y�H�Y�KY]H���݈�NH8�$�����O��[����]����\��H�]L�X�L^[��H����[][YH�\��X�HZ\��[ۋ�]�[�Y�Y[��H[�ܝY�Y\�Kܛ���X�[\�[��[][�X�][ۈ��[��[���ۙ�XY\��\�\X�[]Y\���Y�X[�Y�[��X[\�[���[][�]H�]�XX�Xܛ�������[��Y\˂�����]����]����]�����]��KKH[����KO���]��KKH[��۝Z[�\�KO����X�[ۏ���KKHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOB�QP�USӈ�P�Sӈ8�%�����\ܚY^[�]�OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOHKO���X�[ۈYH�YX�][ۈ��\��H�KMH�X�[ۋ[Y����]��\��H��۝Z[�\������\��H��X�[ۋZXY[��^X�[�\�X�MH���H�\��H��H�K[[ܝ\���\�Y�[YKL����O�YX�][ۂ������]��\��H�����M�\�Y�KX�۝[�X�[�\�����KKH�UHKO��]��\��H���[YM����]��\��H��\�YKX�\��Y��\�H�ܙ\�LLL���]��\��H��\�X��HM���]��\��H�YKZX�ۋ]ܘ\X�Lȏ��H�\��H��H�KX�Z[[��Y�[YKZX�ۈ���O���]���
+�\��H��\�]]H����Y�[H[�[��[�]�\��]O�
+���\��H�^XX��[���\�[ZX��X�LH����ˈ[��[�[��O����\��H�^[]]Y�X[X�Lȏ��ݛ�U	����ɘ�[ɛ����X����8�$��\�[����[�\��H�YK[\����O��[�[��H�X��O��O��UH����[�[�Sۈ
+���O�O���[���]����]����]����KKH�[��[HY�KO��]��\��H���[YM����]��\��H��\�YKX�\��Y��\�H�ܙ\�LLL���]��\��H��\�X��HM���]��\��H�YKZX�ۋ]ܘ\X�Lȏ��H�\��H��H�K\[��[Y�[YKZX�ۈ���O���]���
+�\��H��\�]]H���[��[HY������
+���\��H�^XX��[���\�[ZX��X�LH��Y�����\�XO����\��H�^[]]Y�X[X�Lȏ���]�ܙ[�U	����ɘ�[ɛ����]Y��MH8�$��[��NO���[�\��H�YK[\����O��\��]H����[8�%�]H�[\[ۜ�
+�M�	�[\��N
+O�O��O��\��]H�X��8�%ۙ��[\\�\�Y��[\�O��O�ۛܜ�X]	�[\���Y[��O�O���[���]����]����]�����]����]�����X�[ۏ���KKHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOB���S��P�Sӈ8�%�����\�Y�K�ܚY^[�]�OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOHKO���X�[ۈYH���[Ȉ�\��H�KMH�X�[ۋY\�ȏ��]��\��H��۝Z[�\������\��H��X�[ۋZXY[��^X�[�\�X�MH���H�\��H��H�K[Y��[��Y�[YKL����O���[�	�[\���\][��Y\�����KKH�����\�\�ۜ�]�H���و��[�\��KO��]��\��H�����M����]��\��H���[YM���]��\��H��\���[X�\��Y��\�H�ܙ\�LLL���]��\��H��\�X��HM���
+H�\��H���[X�]Y�ܞH���H�\��H��H�KX�Z[[��YKL����O��X[\�]B��
+O��]��\��H�]L�Y�^�^]ܘ\�\L�����[��\��H��Y�H��[X�Y�H���X[\�]HX�[��O��[����[��\��H��Y�H��[X�Y�H��X\��]�\�X\��	�[\�[�[\�\���[����[��\��H��Y�H��[X�Y�H��X\�H	�[\��[\���\�[�[\�\���[����[��\��H��Y�H��[X�Y�H����\�H�\���ܙ[�][ۏ��[����[��\��H��Y�H��[X�Y�H����\�HX\��][��	�[\�X��Y�[����[����[��\��H��Y�H��[X�Y�H��\�[��	�[\�[��[�ܞHX[�Y�[Y[���[����]����]����]����]����]��\��H���[YM���]��\��H��\���[X�\��Y��\�H�ܙ\�LLL���]��\��H��\�X��HM���
+H�\��H���[X�]Y�ܞH���H�\��H��H�KYܘ\]\YKL����O��[�[��H	�[\�[�[\�\�
+O��]��\��H�]L�Y�^�^]ܘ\�\L�����[��\��H��Y�H��[X�Y�H���[�[��X[[�[\�\���[����[��\��H�badge skill-badge">Due Diligence Support</span>
+                <span class="badge skill-badge">Real Estate Database Management</span>
+                <span class="badge skill-badge">CRM &amp; Prospecting Tools</span>
+                <span class="badge skill-badge">Cold Calling &amp; Lead Generation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card skill-card shadow-sm border-0 h-100">
+            <div class="card-body p-4">
+              <h5 class="skill-category">
+                <i class="bi bi-tools me-2"></i>Tools &amp; Software
+              </h5>
+              <div class="mt-3 d-flex flex-wrap gap-2">
+                <span class="badge skill-badge">Excel</span>
+                <span class="badge skill-badge">Adobe Creative Suite</span>
+                <span class="badge skill-badge">Graphic Design</span>
+                <span class="badge skill-badge">Microsoft Workspace</span>
+                <span class="badge skill-badge">Client Relationship Management</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end skills row -->
+
+      <!-- Tableau visualization embedded in the skills section -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+              <h5 class="text-center mb-3 text-accent">
+                <i class="bi bi-bar-chart-fill me-2"></i>
+                Live Data: 47 Weeks of Powerlifting — Progress &amp; Sentiment Analysis
+              </h5>
+              <p class="text-center text-muted small mb-4">
+                A quantified self study tracking squat, bench, and deadlift progression alongside Instagram sentiment.
+                Interactive — hover, filter, and explore.
+              </p>
+
+              <!-- ===== TABLEAU PUBLIC EMBED ===== -->
+              <!-- To replace: go to public.tableau.com, find a viz, click Share → Embed Code -->
+              <div class="tableau-wrapper">
+                <div class='tableauPlaceholder' id='viz_tableau' style='position: relative; width: 100%;'>
+                  <noscript>
+                    <a href='https://public.tableau.com/'>
+                      <img alt='47 Weeks of Powerlifting' src='https://public.tableau.com/static/images/QS/QSUpdated_up3/Presentation2/1_rss.png' style='border: none' />
+                    </a>
+                  </noscript>
+                  <object class='tableauViz' style='display:none; width:100%;'>
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                    <param name='embed_code_version' value='3' />
+                    <param name='site_root' value='' />
+                    <param name='name' value='QSUpdated_up3/Presentation2' />
+                    <param name='tabs' value='no' />
+                    <param name='toolbar' value='yes' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                  </object>
+                </div>
+                <script type='text/javascript'>
+                  var divElement = document.getElementById('viz_tableau');
+                  var vizElement = divElement.getElementsByTagName('object')[0];
+                  vizElement.style.width = '100%';
+                  vizElement.style.height = (divElement.offsetWidth * 0.65) + 'px';
+                  var scriptElement = document.createElement('script');
+                  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer id="footer" class="py-4">
+    <div class="container text-center">
+      <p class="mb-2">
+        <a href="https://www.linkedin.com/in/aaron-erickson/" class="footer-link me-3" target="_blank" title="LinkedIn Profile">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+        <!-- GitHub link: replace USERNAME with your actual GitHub username after creating your account for GitHub Pages hosting -->
+        <a href="https://www.usapowerlifting.com" class="footer-link me-3" target="_blank" title="USA Powerlifting">
+          <i class="bi bi-award-fill"></i> USAPL
+        </a>
+        <a href="scratch.html" class="footer-link" title="Iron Mind Powerlifting">
+          <i class="bi bi-award-fill"></i> Iron Mind
+        </a>
+      </p>
+      <p class="mb-0 footer-copy">&copy; 2026 Aaron Erickson &mdash; BYU
